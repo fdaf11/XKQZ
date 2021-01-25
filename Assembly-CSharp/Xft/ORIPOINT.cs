@@ -1,0 +1,27 @@
+﻿using System;
+
+namespace Xft
+{
+	// Token: 0x02000566 RID: 1382
+	public enum ORIPOINT
+	{
+		// Token: 0x04002900 RID: 10496
+		CENTER,
+		// Token: 0x04002901 RID: 10497
+		LEFT_UP,
+		// Token: 0x04002902 RID: 10498
+		LEFT_BOTTOM,
+		// Token: 0x04002903 RID: 10499
+		RIGHT_BOTTOM,
+		// Token: 0x04002904 RID: 10500
+		RIGHT_UP,
+		// Token: 0x04002905 RID: 10501
+		BOTTOM_CENTER,
+		// Token: 0x04002906 RID: 10502
+		TOP_CENTER,
+		// Token: 0x04002907 RID: 10503
+		LEFT_CENTER,
+		// Token: 0x04002908 RID: 10504
+		RIGHT_CENTER
+	}
+}
