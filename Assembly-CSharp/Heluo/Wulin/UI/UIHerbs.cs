@@ -5,23 +5,24 @@ using UnityEngine;
 namespace Heluo.Wulin.UI
 {
 	// Token: 0x02000308 RID: 776
+	// 草药UI
 	public class UIHerbs : UILayer
 	{
 		// Token: 0x06001083 RID: 4227 RVA: 0x0008E754 File Offset: 0x0008C954
 		protected override void Awake()
 		{
-			this.m_BtnHerbsList = new List<Control>();
-			this.m_ItemIconNodeList = new List<HerbsIconNode>();
-			this.m_HoleIconList = new List<Control>();
-			this.m_HoeIconList = new List<Control>();
-			this.m_GetItemIconList = new List<Control>();
-			this.m_LabelItemAmountList = new List<Control>();
-			this.m_GetItemIconBGList = new List<Control>();
-			this.m_LabelNewNumericalList = new List<Control>();
-			this.m_LabelOldNumericalList = new List<Control>();
-			this.m_HerbsItemNodeList = new List<HerbsItemNode>();
-			this.m_HerbsRewardNodeList = new List<HerbsRewardNode>();
-			this.m_HerbsScaleList = new List<Control>();
+			this.m_BtnHerbsList = new List<Control>();					// 使用？
+			this.m_ItemIconNodeList = new List<HerbsIconNode>();		// 图像点
+			this.m_HoleIconList = new List<Control>();					// 这个啥图像？
+			this.m_HoeIconList = new List<Control>();					// 锄头
+			this.m_GetItemIconList = new List<Control>();				// ItemIcon?
+			this.m_LabelItemAmountList = new List<Control>();			// 标签
+			this.m_GetItemIconBGList = new List<Control>();				// ItemBG
+			this.m_LabelNewNumericalList = new List<Control>();			// 标签数值
+			this.m_LabelOldNumericalList = new List<Control>();			// 旧标签数值
+			this.m_HerbsItemNodeList = new List<HerbsItemNode>();		// 草药Node
+			this.m_HerbsRewardNodeList = new List<HerbsRewardNode>();	// 奖励节点
+			this.m_HerbsScaleList = new List<Control>();				// 刻度？缩放？
 			base.Awake();
 		}
 

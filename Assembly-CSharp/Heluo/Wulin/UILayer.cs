@@ -90,11 +90,11 @@ namespace Heluo.Wulin
 		// Token: 0x060010B7 RID: 4279 RVA: 0x0000AE69 File Offset: 0x00009069
 		protected virtual void Awake()
 		{
-			Game.UI.Add(this);
-			this.panel = base.GetComponent<UIPanel>();
-			this.Traversal(base.transform);
-			this.InitialData();
-			this.createKeySelect();
+			Game.UI.Add(this);				//  全局增加此UI
+			this.panel = base.GetComponent<UIPanel>();		// 获取一个Panel，存于本地，用于装东西
+			this.Traversal(base.transform);					// 遍历？位置？
+			this.InitialData();								// 初始化数据
+			this.createKeySelect();							// KeySelected
 		}
 
 		// Token: 0x060010B8 RID: 4280 RVA: 0x0000AE9A File Offset: 0x0000909A
@@ -106,12 +106,12 @@ namespace Heluo.Wulin
 				Widget component = x.GetComponent<Widget>();
 				if (component == null)
 				{
-					this.Traversal(x);
+					this.Traversal(x);		// TArray<>, 迭代
 				}
 				else
 				{
-					component.InitWidget(this);
-					this.AssignWidget(component);
+					component.InitWidget(this);	// 初始化
+					this.AssignWidget(component);	// 绑定Widget，作用：子类重写相应函数。Widget作用未知【】TODO
 				}
 			});
 		}
@@ -350,7 +350,7 @@ namespace Heluo.Wulin
 		}
 
 		// Token: 0x060010CD RID: 4301 RVA: 0x000916D0 File Offset: 0x0008F8D0
-		public void SetInputButton(int state, UIEventListener listener)
+		public void SetInputButton(int state, UIEventListener listener)		// 将回调加入至状态map，待相应状态被调用，将触发这些回调函数
 		{
 			if (!this.controls.ContainsKey(state))
 			{
@@ -380,7 +380,7 @@ namespace Heluo.Wulin
 				{
 					return;
 				}
-				if (!this.current.gameObject.activeSelf)
+				if (!this.current.gameObject.activeSelf)		// 未激活
 				{
 					return;
 				}
@@ -394,18 +394,18 @@ namespace Heluo.Wulin
 			this.current = val;
 			if (this.current != null && this.current.onKeySelect != null)
 			{
-				this.current.OnKeySelect(show);
+				this.current.OnKeySelect(show);		// 回调调用，show? 【】TODO  Current用于查看当前回调的是哪个函数……总觉得没必要，还是说有助Debug?
 			}
 		}
 
 		// Token: 0x060010D1 RID: 4305 RVA: 0x00091778 File Offset: 0x0008F978
-		private bool IsVectorInDirection(Vector2 v, KeyControl.Key dir)
+		private bool IsVectorInDirection(Vector2 v, KeyControl.Key dir)		// vec2转上下左右
 		{
 			float num = v.y / v.x;
 			switch (dir)
 			{
 			case KeyControl.Key.Up:
-				return v.y >= 0f && (num >= 1f || num <= -1f);
+				return v.y >= 0f && (num >= 1f || num <= -1f);		// 四向，斜率
 			case KeyControl.Key.Down:
 				return v.y <= 0f && (num >= 1f || num <= -1f);
 			case KeyControl.Key.Left:
@@ -417,6 +417,7 @@ namespace Heluo.Wulin
 			}
 		}
 
+		// 创建一个Widget，本身设0坐标，Transform.parent设置为传入父.坐标; 【5】Widget -> GameObject; 
 		// Token: 0x060010D2 RID: 4306 RVA: 0x0009186C File Offset: 0x0008FA6C
 		public void CreateUIWidget<T>(string name, GameObject parent, GameObject prefabs, List<T> list, int cloneCount) where T : Widget
 		{
@@ -434,7 +435,7 @@ namespace Heluo.Wulin
 		}
 
 		// Token: 0x0400144B RID: 5195
-		protected static KeySelect m_KeySelect;
+		protected static KeySelect m_KeySelect;		// 【】TODO 此属性尚需要仔细研究；其本身还是静态
 
 		// Token: 0x0400144C RID: 5196
 		protected bool m_bShow;
